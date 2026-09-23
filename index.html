@@ -1,1694 +1,637 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="CV digital de Cesar Segura Landa, Desarrollador Full Stack especializado en Laravel, Vue.js, JavaScript, Python y Google Cloud Platform.">
-  <title>Cesar Segura Landa | Desarrollador Full Stack</title>
-  <style>
-    :root {
-      --bg: #050712;
-      --bg-soft: #0b1022;
-      --ink: #f7fbff;
-      --muted: #a6b3c7;
-      --line: rgba(180, 199, 255, 0.18);
-      --panel: rgba(10, 16, 34, 0.72);
-      --panel-strong: rgba(13, 20, 43, 0.9);
-      --cyan: #33e6ff;
-      --mint: #42f5b0;
-      --rose: #ff5c8a;
-      --amber: #ffd166;
-      --gold: #ffe66d;
-      --violet: #9d6bff;
-      --blue: #4f8cff;
-      --shadow: 0 30px 90px rgba(0, 0, 0, 0.42);
-      color-scheme: dark;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-      overflow-y: auto;
-      scrollbar-gutter: stable;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 18% 18%, rgba(79, 140, 255, 0.28), transparent 28rem),
-        radial-gradient(circle at 86% 10%, rgba(255, 92, 138, 0.18), transparent 26rem),
-        radial-gradient(circle at 72% 76%, rgba(51, 230, 255, 0.16), transparent 30rem),
-        linear-gradient(145deg, #03040b 0%, #07101f 46%, #11091c 100%);
-      overflow: visible;
-    }
-
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -2;
-    }
-
-    body::before {
-      background-image:
-        radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.6px),
-        radial-gradient(circle, rgba(51, 230, 255, 0.72) 0 1px, transparent 1.5px);
-      background-position: 0 0, 44px 76px;
-      background-size: 140px 140px, 210px 210px;
-      opacity: 0.52;
-      animation: starDrift 34s linear infinite;
-    }
-
-    body::after {
-      background:
-        linear-gradient(rgba(79, 140, 255, 0.055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(79, 140, 255, 0.055) 1px, transparent 1px);
-      background-size: 54px 54px;
-      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), transparent 72%);
-      z-index: -1;
-    }
-
-    @keyframes starDrift {
-      from { transform: translate3d(0, 0, 0); }
-      to { transform: translate3d(-140px, 140px, 0); }
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .aurora {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      contain: paint;
-      overflow: clip;
-      background:
-        conic-gradient(from 90deg at 50% 50%, rgba(51, 230, 255, 0.12), rgba(157, 107, 255, 0.16), rgba(255, 92, 138, 0.11), rgba(66, 245, 176, 0.12), rgba(51, 230, 255, 0.12));
-      filter: blur(70px);
-      opacity: 0.78;
-      animation: auroraSpin 22s ease-in-out infinite alternate;
-    }
-
-    .hyperdrive {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      overflow: hidden;
-      contain: paint;
-      opacity: 0.72;
-    }
-
-    .background-planet {
-      position: fixed;
-      right: max(-150px, -10vw);
-      top: 150px;
-      width: clamp(180px, 24vw, 340px);
-      aspect-ratio: 1;
-      z-index: -1;
-      pointer-events: none;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 36% 28%, rgba(255, 255, 255, 0.72), transparent 0 7%, rgba(255, 230, 109, 0.18) 14%, transparent 22%),
-        radial-gradient(circle at 42% 34%, rgba(51, 230, 255, 0.72), rgba(79, 140, 255, 0.38) 28%, rgba(157, 107, 255, 0.22) 56%, rgba(5, 7, 18, 0.92) 100%);
-      box-shadow: inset -70px -50px 100px rgba(0, 0, 0, 0.78), 0 0 120px rgba(51, 230, 255, 0.18);
-      opacity: 0.24;
-      filter: blur(0.8px);
-      animation: backgroundPlanet 14s ease-in-out infinite alternate;
-    }
-
-    .background-planet::before {
-      content: "";
-      position: absolute;
-      left: -34%;
-      right: -34%;
-      top: 46%;
-      height: 16%;
-      border: 2px solid rgba(255, 230, 109, 0.22);
-      border-left-color: transparent;
-      border-right-color: transparent;
-      border-radius: 50%;
-      transform: rotate(-12deg);
-    }
-
-    @keyframes backgroundPlanet {
-      from { transform: translateY(0) scale(1); }
-      to { transform: translateY(18px) scale(1.04); }
-    }
-
-    .hyperdrive span {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 2px;
-      height: clamp(100px, 18vw, 260px);
-      border-radius: 999px;
-      background: linear-gradient(to bottom, transparent, rgba(255, 230, 109, 0.92), rgba(51, 230, 255, 0.82), transparent);
-      transform-origin: 50% 0;
-      animation: hyperspace 2.8s linear infinite;
-      filter: drop-shadow(0 0 12px rgba(255, 230, 109, 0.42));
-    }
-
-    .hyperdrive span:nth-child(1) { transform: rotate(12deg) translateY(-54vh); animation-delay: -0.2s; }
-    .hyperdrive span:nth-child(2) { transform: rotate(42deg) translateY(-54vh); animation-delay: -1.4s; }
-    .hyperdrive span:nth-child(3) { transform: rotate(78deg) translateY(-54vh); animation-delay: -0.8s; }
-    .hyperdrive span:nth-child(4) { transform: rotate(126deg) translateY(-54vh); animation-delay: -2.1s; }
-    .hyperdrive span:nth-child(5) { transform: rotate(168deg) translateY(-54vh); animation-delay: -1.1s; }
-    .hyperdrive span:nth-child(6) { transform: rotate(218deg) translateY(-54vh); animation-delay: -2.5s; }
-    .hyperdrive span:nth-child(7) { transform: rotate(266deg) translateY(-54vh); animation-delay: -0.4s; }
-    .hyperdrive span:nth-child(8) { transform: rotate(314deg) translateY(-54vh); animation-delay: -1.8s; }
-
-    @keyframes hyperspace {
-      0% { opacity: 0; scale: 0.25 0.25; }
-      18% { opacity: 0.95; }
-      100% { opacity: 0; scale: 1.3 1.9; }
-    }
-
-    @keyframes auroraSpin {
-      from { opacity: 0.66; filter: blur(66px); }
-      to { opacity: 0.9; filter: blur(78px); }
-    }
-
-    .site-shell {
-      width: min(1180px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 14px;
-      z-index: 20;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-top: 14px;
-      padding: 10px 12px 10px 16px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(5, 7, 18, 0.72);
-      backdrop-filter: blur(20px);
-      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.28);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 900;
-      white-space: nowrap;
-    }
-
-    .brand-mark {
-      display: grid;
-      place-items: center;
-      width: 38px;
-      height: 38px;
-      border: 1px solid rgba(51, 230, 255, 0.45);
-      border-radius: 8px;
-      background: linear-gradient(135deg, rgba(51, 230, 255, 0.22), rgba(157, 107, 255, 0.26));
-      box-shadow: 0 0 26px rgba(51, 230, 255, 0.28);
-      color: #fff;
-      font-size: 0.78rem;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 4px;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      padding: 10px 12px;
-      border-radius: 8px;
-      color: var(--muted);
-      font-size: 0.9rem;
-      font-weight: 800;
-      transition: color 180ms ease, background 180ms ease, box-shadow 180ms ease;
-    }
-
-    nav a:hover {
-      color: var(--ink);
-      background: rgba(51, 230, 255, 0.11);
-      box-shadow: inset 0 0 0 1px rgba(51, 230, 255, 0.18);
-    }
-
-    .hero {
-      position: relative;
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
-      align-items: center;
-      gap: clamp(28px, 5vw, 72px);
-      min-height: calc(100vh - 64px);
-      padding: 72px 0 44px;
-    }
-
-    .hero-copy {
-      position: relative;
-      z-index: 2;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      width: fit-content;
-      margin: 0 0 22px;
-      padding: 9px 12px;
-      border: 1px solid rgba(51, 230, 255, 0.26);
-      border-radius: 8px;
-      background: rgba(51, 230, 255, 0.08);
-      color: #c9f8ff;
-      font-size: 0.82rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      box-shadow: 0 0 28px rgba(51, 230, 255, 0.12);
-    }
-
-    .eyebrow.cosmic {
-      border-color: rgba(255, 230, 109, 0.34);
-      background: rgba(255, 230, 109, 0.08);
-      color: #fff5b8;
-      box-shadow: 0 0 30px rgba(255, 230, 109, 0.13);
-    }
-
-    .identity-strip {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      width: fit-content;
-      max-width: min(100%, 520px);
-      margin-bottom: 22px;
-      padding: 10px 14px 10px 10px;
-      border: 1px solid rgba(51, 230, 255, 0.2);
-      border-radius: 8px;
-      background: rgba(7, 13, 27, 0.74);
-      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.22), inset 0 0 0 1px rgba(255, 255, 255, 0.025);
-      backdrop-filter: blur(16px);
-    }
-
-    .identity-strip img {
-      width: 54px;
-      height: 54px;
-      border: 1px solid rgba(51, 230, 255, 0.36);
-      border-radius: 8px;
-      object-fit: cover;
-      filter: contrast(1.12) brightness(0.88);
-      box-shadow: 0 0 24px rgba(51, 230, 255, 0.22);
-    }
-
-    .identity-strip strong,
-    .identity-strip span {
-      display: block;
-    }
-
-    .identity-strip strong {
-      color: #fff;
-      font-size: 0.95rem;
-    }
-
-    .identity-strip span {
-      margin-top: 3px;
-      color: var(--muted);
-      font-size: 0.82rem;
-      font-weight: 750;
-    }
-
-    .status-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--mint);
-      box-shadow: 0 0 0 6px rgba(66, 245, 176, 0.13), 0 0 22px rgba(66, 245, 176, 0.8);
-    }
-
-    h1 {
-      max-width: 780px;
-      margin: 0;
-      font-size: clamp(3.2rem, 8vw, 6.9rem);
-      line-height: 0.9;
-      letter-spacing: 0;
-    }
-
-    .hero-title-accent {
-      display: block;
-      color: transparent;
-      background: linear-gradient(90deg, #fff, var(--cyan) 24%, var(--violet) 58%, var(--rose));
-      background-clip: text;
-      -webkit-background-clip: text;
-      text-shadow: 0 0 44px rgba(51, 230, 255, 0.24);
-    }
-
-    .lead {
-      max-width: 660px;
-      margin: 28px 0 0;
-      color: #c3ccdd;
-      font-size: clamp(1.05rem, 2vw, 1.28rem);
-      line-height: 1.65;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 34px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-height: 48px;
-      padding: 0 18px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      font-weight: 900;
-      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
-    }
-
-    .button.primary {
-      border-color: rgba(51, 230, 255, 0.42);
-      background: linear-gradient(135deg, rgba(51, 230, 255, 0.95), rgba(79, 140, 255, 0.95));
-      color: #03101f;
-      box-shadow: 0 18px 46px rgba(51, 230, 255, 0.22);
-    }
-
-    .button.secondary {
-      background: rgba(255, 255, 255, 0.06);
-      color: var(--ink);
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 18px 44px rgba(51, 230, 255, 0.22);
-    }
-
-    .universe-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      max-width: 660px;
-      margin-top: 28px;
-    }
-
-    .universe-tags span {
-      padding: 10px 12px;
-      border: 1px solid rgba(255, 230, 109, 0.2);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.055);
-      color: #fff5b8;
-      font-size: 0.84rem;
-      font-weight: 900;
-      box-shadow: inset 0 0 18px rgba(255, 230, 109, 0.045);
-    }
-
-    .hero-visual {
-      position: relative;
-      min-height: 640px;
-      overflow: hidden;
-      border-radius: 8px;
-      isolation: isolate;
-    }
-
-    #networkCanvas {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      filter: drop-shadow(0 0 16px rgba(51, 230, 255, 0.22));
-    }
-
-    .orbit {
-      position: absolute;
-      inset: 8%;
-      border: 1px solid rgba(51, 230, 255, 0.2);
-      border-radius: 50%;
-      transform: rotate(-18deg);
-      box-shadow: inset 0 0 40px rgba(51, 230, 255, 0.06), 0 0 44px rgba(157, 107, 255, 0.1);
-    }
-
-    .cosmic-scene {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .planet {
-      position: absolute;
-      border-radius: 50%;
-      filter: drop-shadow(0 0 30px rgba(51, 230, 255, 0.22));
-    }
-
-    .planet.primary {
-      right: 6%;
-      top: 9%;
-      width: clamp(150px, 20vw, 240px);
-      aspect-ratio: 1;
-      background:
-        radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.86), transparent 0 8%, rgba(255, 255, 255, 0.08) 13%, transparent 18%),
-        radial-gradient(circle at 42% 32%, #6ff6ff 0 6%, #3d7dff 23%, #1d245e 56%, #060711 100%);
-      box-shadow: inset -42px -34px 74px rgba(0, 0, 0, 0.72), inset 18px 14px 42px rgba(255, 255, 255, 0.1), 0 0 70px rgba(51, 230, 255, 0.18);
-      opacity: 0.82;
-      animation: planetPulse 7s ease-in-out infinite;
-    }
-
-    .planet.primary::before {
-      content: "";
-      position: absolute;
-      left: -26%;
-      right: -26%;
-      top: 43%;
-      height: 18%;
-      border: 1px solid rgba(255, 230, 109, 0.2);
-      border-left-color: transparent;
-      border-right-color: transparent;
-      border-radius: 50%;
-      transform: rotate(-14deg);
-      filter: blur(0.2px);
-    }
-
-    .planet.secondary {
-      left: 4%;
-      bottom: 10%;
-      width: clamp(72px, 9vw, 108px);
-      aspect-ratio: 1;
-      background: radial-gradient(circle at 35% 28%, #ffdf95, #b85dff 34%, #34115d 70%, #090716);
-      box-shadow: inset -22px -18px 36px rgba(0, 0, 0, 0.72), 0 0 44px rgba(255, 92, 138, 0.2);
-      opacity: 0.78;
-      animation: planetDrift 9s ease-in-out infinite;
-    }
-
-    .nebula-cloud {
-      position: absolute;
-      left: 8%;
-      right: 6%;
-      top: 14%;
-      bottom: 12%;
-      background:
-        radial-gradient(circle at 26% 32%, rgba(255, 92, 138, 0.3), transparent 24%),
-        radial-gradient(circle at 66% 42%, rgba(51, 230, 255, 0.24), transparent 28%),
-        radial-gradient(circle at 48% 68%, rgba(157, 107, 255, 0.28), transparent 32%);
-      filter: blur(36px);
-      opacity: 0.8;
-      animation: nebulaBreathe 10s ease-in-out infinite alternate;
-    }
-
-    .comet {
-      position: absolute;
-      right: 8%;
-      bottom: 24%;
-      width: 160px;
-      height: 2px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), rgba(51, 230, 255, 0.2));
-      transform: rotate(-24deg);
-      animation: cometPass 6s ease-in-out infinite;
-      filter: drop-shadow(0 0 12px rgba(51, 230, 255, 0.8));
-    }
-
-    @keyframes planetPulse {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(10px) scale(1.025); }
-    }
-
-    @keyframes planetDrift {
-      0%, 100% { transform: translate3d(0, 0, 0); }
-      50% { transform: translate3d(16px, -12px, 0); }
-    }
-
-    @keyframes nebulaBreathe {
-      from { opacity: 0.52; transform: scale(0.96); }
-      to { opacity: 0.9; transform: scale(1.05); }
-    }
-
-    @keyframes cometPass {
-      0%, 28% { opacity: 0; transform: translate3d(90px, -50px, 0) rotate(-24deg); }
-      42% { opacity: 1; }
-      100% { opacity: 0; transform: translate3d(-240px, 120px, 0) rotate(-24deg); }
-    }
-
-    .orbit::before,
-    .orbit::after {
-      content: "";
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--cyan);
-      box-shadow: 0 0 24px var(--cyan);
-    }
-
-    .orbit::before {
-      left: 14%;
-      top: 10%;
-    }
-
-    .orbit::after {
-      right: 9%;
-      bottom: 17%;
-      background: var(--rose);
-      box-shadow: 0 0 24px var(--rose);
-    }
-
-    .profile-panel {
-      position: absolute;
-      right: 0;
-      top: 54%;
-      width: min(460px, 100%);
-      transform: translateY(-50%);
-      padding: 22px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: linear-gradient(145deg, rgba(13, 20, 43, 0.96), rgba(6, 10, 24, 0.86));
-      backdrop-filter: blur(22px);
-      box-shadow: var(--shadow), inset 0 0 0 1px rgba(255, 255, 255, 0.035);
-      z-index: 3;
-    }
-
-    .profile-panel::before {
-      content: "";
-      position: absolute;
-      inset: -1px;
-      z-index: -1;
-      border-radius: 8px;
-      background: linear-gradient(135deg, rgba(51, 230, 255, 0.58), transparent 36%, rgba(255, 92, 138, 0.45));
-      opacity: 0.45;
-    }
-
-    .profile-head {
-      display: grid;
-      grid-template-columns: 118px 1fr;
-      gap: 16px;
-      align-items: center;
-    }
-
-    .profile-frame {
-      position: relative;
-      width: 118px;
-      aspect-ratio: 1;
-      padding: 6px;
-      border: 1px solid rgba(255, 230, 109, 0.42);
-      border-radius: 8px;
-      background:
-        linear-gradient(135deg, rgba(255, 230, 109, 0.9), rgba(51, 230, 255, 0.72), rgba(157, 107, 255, 0.62)),
-        rgba(255, 255, 255, 0.06);
-      box-shadow: 0 0 34px rgba(255, 230, 109, 0.22), 0 0 58px rgba(51, 230, 255, 0.16);
-      overflow: hidden;
-      animation: profileFloat 5s ease-in-out infinite;
-    }
-
-    .profile-frame::before {
-      content: "";
-      position: absolute;
-      inset: 10px;
-      z-index: 2;
-      border: 1px solid rgba(51, 230, 255, 0.32);
-      border-radius: 8px;
-      pointer-events: none;
-    }
-
-    .profile-frame::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 3;
-      background: linear-gradient(120deg, transparent 0 34%, rgba(255, 255, 255, 0.26) 44%, transparent 54% 100%);
-      transform: translateX(-120%);
-      animation: visorScan 3.8s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    .profile-photo {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 6px;
-      filter: contrast(1.12) saturate(0.9) brightness(0.88);
-    }
-
-    @keyframes profileFloat {
-      0%, 100% { transform: translateY(0) rotateZ(-1deg); }
-      50% { transform: translateY(-8px) rotateZ(1deg); }
-    }
-
-    @keyframes visorScan {
-      0%, 45% { transform: translateX(-120%); opacity: 0; }
-      60% { opacity: 1; }
-      100% { transform: translateX(130%); opacity: 0; }
-    }
-
-    .profile-panel h2,
-    .profile-panel p {
-      margin: 0;
-    }
-
-    .profile-panel h2 {
-      font-size: 1.28rem;
-    }
-
-    .profile-panel p {
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    .signal-list {
-      display: grid;
-      gap: 10px;
-      margin-top: 22px;
-    }
-
-    .signal {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      align-items: start;
-      gap: 10px;
-      padding: 13px;
-      border: 1px solid rgba(180, 199, 255, 0.13);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.045);
-    }
-
-    .signal strong {
-      display: block;
-      margin-bottom: 2px;
-      color: #fff;
-    }
-
-    .signal span {
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    .mini-icon {
-      display: grid;
-      place-items: center;
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: rgba(51, 230, 255, 0.12);
-      color: var(--cyan);
-      font-size: 0.78rem;
-      font-weight: 950;
-      box-shadow: inset 0 0 0 1px rgba(51, 230, 255, 0.22);
-    }
-
-    .metrics {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin: -8px auto 72px;
-    }
-
-    .metric,
-    .project-card,
-    .timeline-item,
-    .stack-panel,
-    .contact-panel {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--panel);
-      box-shadow: 0 18px 58px rgba(0, 0, 0, 0.24);
-      backdrop-filter: blur(18px);
-    }
-
-    .metric {
-      padding: 22px;
-    }
-
-    .metric b {
-      display: block;
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      line-height: 1;
-      color: #fff;
-    }
-
-    .metric span {
-      display: block;
-      margin-top: 8px;
-      color: var(--muted);
-      line-height: 1.45;
-      font-weight: 700;
-    }
-
-    section {
-      padding: 72px 0;
-    }
-
-    .section-head {
-      display: grid;
-      grid-template-columns: 0.72fr 1fr;
-      align-items: end;
-      gap: 30px;
-      margin-bottom: 30px;
-    }
-
-    .section-kicker {
-      margin: 0 0 10px;
-      color: var(--cyan);
-      font-size: 0.82rem;
-      font-weight: 950;
-      text-transform: uppercase;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: clamp(2rem, 4.5vw, 4rem);
-      line-height: 1;
-      letter-spacing: 0;
-    }
-
-    .section-head p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 1.02rem;
-      line-height: 1.7;
-    }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .project-card {
-      position: relative;
-      min-height: 292px;
-      padding: 24px;
-      overflow: hidden;
-      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
-    }
-
-    .project-card::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto;
-      height: 6px;
-      background: linear-gradient(90deg, var(--cyan), var(--violet), var(--rose), var(--amber));
-    }
-
-    .project-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(51, 230, 255, 0.44);
-      box-shadow: 0 24px 80px rgba(51, 230, 255, 0.13);
-    }
-
-    .project-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: start;
-      gap: 16px;
-    }
-
-    .project-card h3 {
-      margin: 0;
-      font-size: clamp(1.35rem, 2vw, 1.75rem);
-    }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 88px;
-      padding: 7px 10px;
-      border: 1px solid rgba(51, 230, 255, 0.18);
-      border-radius: 8px;
-      background: rgba(51, 230, 255, 0.08);
-      color: #c9f8ff;
-      font-size: 0.76rem;
-      font-weight: 900;
-      white-space: nowrap;
-    }
-
-    .project-card p {
-      margin: 20px 0 0;
-      color: #c2ccdc;
-      line-height: 1.7;
-    }
-
-    .project-points {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 22px;
-    }
-
-    .pill {
-      padding: 8px 10px;
-      border: 1px solid rgba(66, 245, 176, 0.16);
-      border-radius: 8px;
-      background: rgba(66, 245, 176, 0.09);
-      color: #b8ffdf;
-      font-size: 0.8rem;
-      font-weight: 900;
-    }
-
-    .timeline {
-      display: grid;
-      gap: 18px;
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 210px 1fr;
-      gap: 22px;
-      padding: 24px;
-    }
-
-    .timeline-date {
-      color: var(--amber);
-      font-weight: 950;
-    }
-
-    .timeline-item h3 {
-      margin: 0;
-      font-size: 1.4rem;
-    }
-
-    .role {
-      margin: 4px 0 14px;
-      color: var(--muted);
-      font-weight: 800;
-    }
-
-    .clean-list {
-      display: grid;
-      gap: 10px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      color: #c2ccdc;
-      line-height: 1.6;
-    }
-
-    .clean-list li {
-      position: relative;
-      padding-left: 22px;
-    }
-
-    .clean-list li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.72em;
-      width: 8px;
-      height: 8px;
-      border-radius: 3px;
-      background: var(--rose);
-      box-shadow: 0 0 14px rgba(255, 92, 138, 0.7);
-    }
-
-    .stack-layout {
-      display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      gap: 18px;
-      align-items: start;
-    }
-
-    .stack-panel {
-      padding: 26px;
-    }
-
-    .stack-panel h3,
-    .contact-panel h3 {
-      margin: 0 0 16px;
-      font-size: 1.4rem;
-    }
-
-    .logo-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .tech-card {
-      position: relative;
-      display: grid;
-      gap: 14px;
-      min-height: 150px;
-      padding: 16px;
-      border: 1px solid rgba(180, 199, 255, 0.14);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.045);
-      overflow: hidden;
-      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
-    }
-
-    .tech-card::after {
-      content: "";
-      position: absolute;
-      inset: auto -30% -45% 25%;
-      height: 90px;
-      background: radial-gradient(circle, var(--tech-glow, rgba(51, 230, 255, 0.22)), transparent 68%);
-      opacity: 0.75;
-    }
-
-    .tech-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--tech, rgba(51, 230, 255, 0.45));
-      background: rgba(255, 255, 255, 0.07);
-    }
-
-    .tech-card svg {
-      width: 48px;
-      height: 48px;
-      color: var(--tech);
-      filter: drop-shadow(0 0 14px var(--tech-glow));
-    }
-
-    .tech-card strong {
-      display: block;
-      font-size: 1.05rem;
-    }
-
-    .tech-card span {
-      color: var(--muted);
-      font-size: 0.86rem;
-      line-height: 1.45;
-    }
-
-    .skill-cloud {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .skill {
-      padding: 10px 12px;
-      border: 1px solid rgba(180, 199, 255, 0.14);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.055);
-      color: #d9e3f7;
-      font-weight: 850;
-    }
-
-    .competency-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .competency {
-      padding: 18px;
-      border: 1px solid rgba(180, 199, 255, 0.13);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.045);
-    }
-
-    .competency strong {
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    .competency span {
-      color: var(--muted);
-      line-height: 1.55;
-    }
-
-    .contact {
-      padding-bottom: 36px;
-    }
-
-    .contact-panel {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      align-items: center;
-      gap: 24px;
-      padding: 26px;
-      background:
-        linear-gradient(135deg, rgba(13, 20, 43, 0.92), rgba(6, 10, 24, 0.76)),
-        linear-gradient(90deg, rgba(51, 230, 255, 0.18), rgba(255, 92, 138, 0.14));
-    }
-
-    .contact-panel p {
-      margin: 12px 0 0;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .contact-links {
-      display: grid;
-      gap: 10px;
-    }
-
-    .contact-link {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 14px;
-      padding: 14px 16px;
-      border: 1px solid rgba(180, 199, 255, 0.14);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.055);
-      font-weight: 900;
-    }
-
-    .contact-link span {
-      color: var(--muted);
-      font-weight: 750;
-      overflow-wrap: anywhere;
-      text-align: right;
-    }
-
-    footer {
-      padding: 22px 0 36px;
-      color: var(--muted);
-      text-align: center;
-      font-size: 0.95rem;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 560ms ease, transform 560ms ease;
-    }
-
-    .reveal.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 980px) {
-      .logo-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 920px) {
-      .site-shell {
-        width: min(100% - 28px, 720px);
-      }
-
-      .topbar {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      nav {
-        justify-content: flex-start;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-        min-height: auto;
-        padding-top: 58px;
-      }
-
-      .hero-visual {
-        min-height: 500px;
-      }
-
-      .profile-panel {
-        left: 0;
-        right: auto;
-        top: 50%;
-      }
-
-      .metrics,
-      .project-grid,
-      .stack-layout,
-      .section-head,
-      .contact-panel {
-        grid-template-columns: 1fr;
-      }
-
-      .metrics {
-        margin-top: 4px;
-      }
-
-      .timeline-item {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 620px) {
-      .site-shell {
-        width: min(100% - 22px, 520px);
-      }
-
-      nav a {
-        padding: 8px 9px;
-        font-size: 0.82rem;
-      }
-
-      .hero {
-        padding-top: 42px;
-      }
-
-      .identity-strip {
-        width: fit-content;
-      }
-
-      h1 {
-        font-size: clamp(2.72rem, 16vw, 4.2rem);
-      }
-
-      .hero-actions {
-        flex-direction: column;
-      }
-
-      .button {
-        width: 100%;
-      }
-
-      .hero-visual {
-        min-height: auto;
-        padding: 24px 0;
-      }
-
-      .orbit {
-        inset: 6%;
-      }
-
-      .profile-head {
-        grid-template-columns: 1fr;
-      }
-
-      .profile-panel {
-        position: relative;
-        top: auto;
-        width: 100%;
-        transform: none;
-      }
-
-      .metrics,
-      .logo-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .metric,
-      .project-card,
-      .timeline-item,
-      .stack-panel,
-      .contact-panel {
-        padding: 18px;
-      }
-
-      .tech-card {
-        min-height: 138px;
-      }
-
-      .project-top,
-      .contact-link {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .contact-link span {
-        text-align: left;
-      }
-
-      .competency-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 430px) {
-      .identity-strip {
-        width: 100%;
-      }
-
-      .metrics,
-      .logo-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cesar Segura Landa | Desarrollador Full Stack</title>
+<meta name="description" content="Desarrollador Full Stack con 4+ años construyendo y modernizando aplicaciones web empresariales con Laravel, Vue.js, PHP, Python y Google Cloud. Estado de México · remoto.">
+<meta property="og:title" content="Cesar Segura Landa · Desarrollador Full Stack">
+<meta property="og:description" content="Laravel · Vue.js · PHP · Python · Google Cloud. 6 aplicaciones modernizadas y migración a la nube de un grupo de 8 empresas.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://slc-404.github.io/">
+<meta name="theme-color" content="#0d1016">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d1016'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='monospace' font-weight='700' font-size='26' fill='%23ff6b57'%3ECS%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Cesar Segura Landa","jobTitle":"Desarrollador Full Stack","email":"mailto:cesar_landa@live.com","url":"https://slc-404.github.io/","address":{"@type":"PostalAddress","addressRegion":"Estado de México","addressCountry":"MX"},"sameAs":["https://www.linkedin.com/in/cesar-segura-landa-028332419","https://github.com/SLC-404"],"knowsAbout":["PHP","Laravel","Livewire","Vue.js","Python","Django","MySQL","PostgreSQL","Google Cloud Platform","APIs REST","Docker"]}
+</script>
+<style>
+  /* ---------- Tokens (dark-first) ---------- */
+  :root{
+    color-scheme: dark;
+    --ground:#0d1016;
+    --surface:#141922;
+    --surface-2:#1a202b;
+    --line:#252d3a;
+    --text:#e7eaf0;
+    --muted:#8d96a7;
+    --faint:#5d6677;
+    --accent:#ff6b57;          /* Laravel-red, warmed */
+    --accent-ink:#1a0d0a;
+    --accent-soft:rgba(255,107,87,.12);
+    --teal:#4fd1b5;            /* Vue green-teal */
+    --teal-soft:rgba(79,209,181,.12);
+    --amber:#f2b84b;
+    --shadow:0 20px 50px -24px rgba(0,0,0,.65);
+    --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+    --body:"IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --radius:10px;
+    --gutter:clamp(16px,4vw,40px);
+  }
+  @media (prefers-color-scheme: light){
+    :root:not([data-theme="dark"]){
+      color-scheme: light;
+      --ground:#f4f6f9; --surface:#ffffff; --surface-2:#eef1f5; --line:#dde2ea;
+      --text:#121722; --muted:#566074; --faint:#8a93a4;
+      --accent:#d63b27; --accent-ink:#ffffff; --accent-soft:rgba(214,59,39,.09);
+      --teal:#138a72; --teal-soft:rgba(19,138,114,.1); --amber:#a86c00;
+      --shadow:0 18px 40px -26px rgba(20,30,50,.35);
+    }
+  }
+  :root[data-theme="light"]{
+    color-scheme: light;
+    --ground:#f4f6f9; --surface:#ffffff; --surface-2:#eef1f5; --line:#dde2ea;
+    --text:#121722; --muted:#566074; --faint:#8a93a4;
+    --accent:#d63b27; --accent-ink:#ffffff; --accent-soft:rgba(214,59,39,.09);
+    --teal:#138a72; --teal-soft:rgba(19,138,114,.1); --amber:#a86c00;
+    --shadow:0 18px 40px -26px rgba(20,30,50,.35);
+  }
+
+  /* ---------- Base ---------- */
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--ground); color:var(--text);
+    font:400 16px/1.65 var(--body);
+    padding-inline:var(--gutter);
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:56px 56px;
+    background-position:-1px -1px;
+    background-attachment:fixed;
+  }
+  body::before{ /* fade the grid so it only whispers */
+    content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background:radial-gradient(1200px 700px at 70% -10%, transparent 0%, var(--ground) 70%);
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+  .wrap{max-width:1120px;margin-inline:auto}
+  .mono{font-family:var(--mono)}
+  h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.02em}
+  p{margin:0}
+  [data-lang="es"] [lang="en"], [data-lang="en"] [lang="es"]{display:none !important}
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:sticky; top:env(safe-area-inset-top,0px); z-index:20;
+    margin-inline:calc(var(--gutter) * -1); padding:12px var(--gutter);
+    background:color-mix(in srgb, var(--ground) 82%, transparent);
+    backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav .wrap{display:flex;align-items:center;gap:20px}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600}
+  .brand .mark{
+    width:32px;height:32px;border-radius:8px;display:grid;place-items:center;
+    background:var(--accent);color:var(--accent-ink);font:700 13px var(--mono);
+  }
+  .nav-links{display:flex;gap:4px;margin-left:auto;list-style:none;padding:0;margin-block:0}
+  .nav-links a{
+    text-decoration:none;color:var(--muted);font-size:14px;padding:6px 10px;border-radius:6px;
+  }
+  .nav-links a:hover{color:var(--text);background:var(--surface-2)}
+  .nav-tools{display:flex;gap:6px}
+  .icon-btn{
+    height:34px;min-width:34px;padding:0 10px;border-radius:8px;border:1px solid var(--line);
+    background:var(--surface);color:var(--text);cursor:pointer;font:600 12px var(--mono);
+    display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  }
+  .icon-btn:hover{border-color:var(--faint)}
+  .icon-btn svg{width:16px;height:16px}
+  @media (max-width:760px){ .nav-links{display:none} .nav-tools{margin-left:auto} }
+
+  /* ---------- Hero ---------- */
+  .hero{padding-block:clamp(48px,8vw,96px) clamp(40px,6vw,72px)}
+  .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,64px);align-items:center}
+  @media (max-width:900px){ .hero .wrap{grid-template-columns:1fr} }
+  .status{
+    display:inline-flex;align-items:center;gap:10px;font:500 13px var(--mono);color:var(--teal);
+    padding:6px 12px;border:1px solid color-mix(in srgb,var(--teal) 35%, transparent);
+    background:var(--teal-soft);border-radius:999px;
+  }
+  .status .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px var(--teal-soft);animation:pulse 2.4s ease-in-out infinite}
+  @keyframes pulse{50%{box-shadow:0 0 0 8px transparent}}
+  .hero h1{font-size:clamp(44px,7.4vw,88px);font-weight:800;margin-top:22px}
+  .hero h1 .last{color:var(--accent)}
+  .role{
+    margin-top:14px;font:500 clamp(15px,1.8vw,18px) var(--mono);color:var(--muted);
+    display:flex;flex-wrap:wrap;gap:6px 14px;
+  }
+  .role b{color:var(--text);font-weight:700}
+  .lead{margin-top:22px;font-size:clamp(17px,1.9vw,19px);color:var(--muted);max-width:58ch}
+  .lead strong{color:var(--text);font-weight:600}
+  .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;text-decoration:none;font:600 15px var(--body);
+    padding:12px 18px;border-radius:9px;border:1px solid var(--line);background:var(--surface);color:var(--text);
+    transition:transform .15s ease, border-color .15s ease, background .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);border-color:var(--faint)}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+  .btn.primary:hover{filter:brightness(1.06)}
+  .btn svg{width:17px;height:17px}
+
+  /* Terminal card — the hero's thesis: a career read like a deploy log */
+  .term{
+    background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);
+    overflow:hidden;font:400 13px/1.7 var(--mono);
+  }
+  .term-bar{display:flex;align-items:center;gap:7px;padding:11px 14px;border-bottom:1px solid var(--line);background:var(--surface-2)}
+  .term-bar i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+  .term-bar i:nth-child(1){background:#ff5f57}.term-bar i:nth-child(2){background:#febc2e}.term-bar i:nth-child(3){background:#28c840}
+  .term-bar span{margin-left:8px;color:var(--faint);font-size:12px}
+  .term-body{padding:16px 18px;overflow-x:auto}
+  .term-body .cmd{color:var(--text)} .term-body .cmd::before{content:"$ ";color:var(--teal)}
+  .log{list-style:none;margin:10px 0 14px;padding:0}
+  .log li{display:grid;grid-template-columns:auto 1fr;gap:10px;white-space:nowrap}
+  .log .h{color:var(--amber)}
+  .log .tag{color:var(--accent)}
+  .kv{color:var(--muted)} .kv b{color:var(--teal);font-weight:500} .kv s{text-decoration:none;color:var(--text)}
+  .cursor{display:inline-block;width:8px;height:15px;background:var(--accent);vertical-align:-2px;animation:blink 1.1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+
+  /* ---------- Metrics ---------- */
+  .metrics{border-block:1px solid var(--line);background:color-mix(in srgb,var(--surface) 60%, transparent)}
+  .metrics .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+  .metric{padding:26px 20px;border-left:1px solid var(--line)}
+  .metric:first-child{border-left:0;padding-left:0}
+  .metric .n{font:800 clamp(32px,4vw,44px)/1 var(--display);font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+  .metric .n em{font-style:normal;color:var(--accent)}
+  .metric .l{margin-top:8px;color:var(--muted);font-size:14px;line-height:1.4}
+  @media (max-width:760px){
+    .metrics .wrap{grid-template-columns:1fr 1fr}
+    .metric{border-left:0;padding:20px 0}
+    .metric:nth-child(n+3){border-top:1px solid var(--line)}
+  }
+
+  /* ---------- Sections ---------- */
+  section.block{padding-block:clamp(64px,9vw,104px)}
+  .sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px 32px;margin-bottom:36px}
+  .kicker{font:500 13px var(--mono);color:var(--accent);letter-spacing:.04em}
+  .sec-head h2{font-size:clamp(30px,4vw,44px);font-weight:700;margin-top:10px}
+  .sec-head p{color:var(--muted);max-width:46ch}
+
+  /* Featured project */
+  .feature{
+    display:grid;grid-template-columns:1.1fr .9fr;gap:0;border:1px solid var(--line);border-radius:14px;
+    background:var(--surface);overflow:hidden;box-shadow:var(--shadow);
+  }
+  @media (max-width:860px){ .feature{grid-template-columns:1fr} }
+  .feature-main{padding:clamp(22px,3.5vw,36px)}
+  .badge{display:inline-flex;align-items:center;gap:6px;font:600 12px var(--mono);padding:4px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+  .feature h3{font-size:clamp(26px,3vw,34px);margin-top:14px}
+  .feature .sub{color:var(--muted);margin-top:10px;max-width:60ch}
+  .checks{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:9px}
+  .checks li{display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:start}
+  .checks svg{width:16px;height:16px;margin-top:4px;color:var(--teal)}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:22px}
+  .chip{font:500 12.5px var(--mono);padding:5px 10px;border-radius:6px;border:1px solid var(--line);background:var(--surface-2);color:var(--text)}
+  .feature .btn{margin-top:24px}
+  .feature-side{
+    border-left:1px solid var(--line);background:var(--surface-2);padding:clamp(22px,3.5vw,36px);
+    display:flex;flex-direction:column;gap:14px;font:400 13px/1.6 var(--mono);
+  }
+  @media (max-width:860px){ .feature-side{border-left:0;border-top:1px solid var(--line)} }
+  .chat{display:flex;flex-direction:column;gap:10px}
+  .msg{padding:10px 12px;border-radius:10px;max-width:92%}
+  .msg.u{align-self:flex-end;background:var(--accent);color:var(--accent-ink);border-bottom-right-radius:3px}
+  .msg.a{align-self:flex-start;background:var(--surface);border:1px solid var(--line);border-bottom-left-radius:3px}
+  .msg.a b{color:var(--teal);font-weight:500}
+  .side-note{color:var(--faint);font-size:12px}
+  .tree{white-space:pre;color:var(--muted);overflow-x:auto;margin-top:auto;padding-top:14px;border-top:1px dashed var(--line)}
+  .tree b{color:var(--text);font-weight:500}
+
+  /* Enterprise work — rows, not cards */
+  .work-label{display:flex;align-items:center;gap:10px;margin:48px 0 6px;color:var(--muted);font:500 13px var(--mono)}
+  .work-label svg{width:15px;height:15px}
+  .rows{border-top:1px solid var(--line)}
+  .row{
+    display:grid;grid-template-columns:220px 1fr auto;gap:10px 28px;padding:22px 0;border-bottom:1px solid var(--line);
+    align-items:baseline;
+  }
+  .row h3{font-size:20px;font-weight:700}
+  .row p{color:var(--muted)}
+  .row .chips{margin-top:0;justify-content:flex-end}
+  @media (max-width:860px){ .row{grid-template-columns:1fr} .row .chips{justify-content:flex-start} }
+
+  /* Experience — git log timeline */
+  .timeline{list-style:none;margin:0;padding:0;position:relative}
+  .timeline::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:var(--line)}
+  .job{position:relative;padding-left:40px;padding-bottom:44px}
+  .job:last-child{padding-bottom:0}
+  .job::before{
+    content:"";position:absolute;left:0;top:6px;width:16px;height:16px;border-radius:50%;
+    background:var(--ground);border:3px solid var(--accent);
+  }
+  .job.past::before{border-color:var(--faint)}
+  .job-meta{display:flex;flex-wrap:wrap;gap:6px 14px;font:500 13px var(--mono);color:var(--muted)}
+  .job-meta .when{color:var(--amber)}
+  .job h3{font-size:clamp(20px,2.4vw,24px);margin-top:8px}
+  .job .org{color:var(--muted);margin-top:4px}
+  .job ul{margin:14px 0 0;padding-left:18px;display:grid;gap:7px;max-width:78ch}
+  .job li::marker{color:var(--accent)}
+
+  /* Stack */
+  .stack{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  @media (max-width:900px){ .stack{grid-template-columns:1fr 1fr} }
+  @media (max-width:560px){ .stack{grid-template-columns:1fr} }
+  .stack > div{background:var(--surface);padding:22px}
+  .stack h3{font:600 13px var(--mono);color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+  .stack .chips{margin-top:12px}
+  .chip.core{border-color:color-mix(in srgb,var(--accent) 45%, transparent);background:var(--accent-soft)}
+
+  /* Credentials */
+  .creds{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  @media (max-width:860px){ .creds{grid-template-columns:1fr} }
+  .cred-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+  .cred-list li{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .cred-list b{font-weight:600}
+  .cred-list span{color:var(--muted);font-size:14px}
+  .cred-list time{font:500 13px var(--mono);color:var(--amber);white-space:nowrap}
+  .cred-list a{color:var(--teal)}
+  .edu{border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:24px;align-self:start}
+  .edu h3{font-size:22px;margin-top:10px}
+  .edu p{color:var(--muted);margin-top:6px}
+  .edu .mono{margin-top:14px;font-size:13px;color:var(--text)}
+  .langs{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+
+  /* Contact */
+  .contact{border:1px solid var(--line);border-radius:18px;background:var(--surface);padding:clamp(24px,5vw,56px);box-shadow:var(--shadow)}
+  .contact h2{font-size:clamp(32px,5vw,56px);font-weight:800}
+  .contact h2 .hl{color:var(--accent)}
+  .contact > p{color:var(--muted);margin-top:14px;max-width:60ch}
+  .channels{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:32px}
+  @media (max-width:900px){ .channels{grid-template-columns:1fr 1fr} }
+  @media (max-width:520px){ .channels{grid-template-columns:1fr} }
+  .channel{
+    display:flex;flex-direction:column;gap:4px;padding:16px;border:1px solid var(--line);border-radius:10px;
+    background:var(--surface-2);text-decoration:none;min-width:0;
+  }
+  .channel:hover{border-color:var(--faint)}
+  .channel small{font:500 12px var(--mono);color:var(--muted)}
+  .channel strong{font-weight:600;overflow-wrap:anywhere}
+  .copy{align-self:flex-start;margin-top:6px}
+
+  footer{padding-block:40px;color:var(--faint);font:400 13px var(--mono)}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+
+  /* Motion — content is visible at rest; this only adds a gentle lift */
+  @media (prefers-reduced-motion:no-preference){
+    .rise{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+    .rise.d1{animation-delay:.08s}.rise.d2{animation-delay:.16s}.rise.d3{animation-delay:.24s}
+    @keyframes rise{from{transform:translateY(10px);opacity:.001}to{transform:none;opacity:1}}
+  }
+  @media (prefers-reduced-motion:reduce){ *{animation:none !important;transition:none !important;scroll-behavior:auto !important} }
+</style>
 </head>
 <body>
-  <div class="aurora" aria-hidden="true"></div>
-  <div class="background-planet" aria-hidden="true"></div>
-  <div class="hyperdrive" aria-hidden="true">
-    <span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Inicio"><span class="mark">CS</span><span>Cesar Segura Landa</span></a>
+    <ul class="nav-links">
+      <li><a href="#proyectos"><span lang="es">Proyectos</span><span lang="en">Projects</span></a></li>
+      <li><a href="#experiencia"><span lang="es">Experiencia</span><span lang="en">Experience</span></a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#formacion"><span lang="es">Formación</span><span lang="en">Credentials</span></a></li>
+      <li><a href="#contacto"><span lang="es">Contacto</span><span lang="en">Contact</span></a></li>
+    </ul>
+    <div class="nav-tools">
+      <button class="icon-btn" id="langBtn" type="button" aria-label="Cambiar idioma / Switch language">EN</button>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Cambiar tema claro u oscuro">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="inicio">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="status rise"><span class="dot"></span>
+          <span lang="es">Disponible · Edo. de México o remoto</span>
+          <span lang="en">Available · State of Mexico or remote</span>
+        </span>
+        <h1 class="rise d1">Cesar Segura <span class="last">Landa</span></h1>
+        <p class="role rise d1"><b>
+          <span lang="es">Desarrollador Full Stack</span><span lang="en">Full Stack Developer</span></b>
+          <span>Laravel · Vue.js · PHP · Python · Google Cloud</span>
+        </p>
+        <p class="lead rise d2">
+          <span lang="es">Construyo y modernizo aplicaciones web empresariales de punta a punta: del requerimiento con el área de negocio al despliegue en la nube. En Grupo Raloy <strong>modernicé 6 aplicaciones</strong> y <strong>migré a Google Cloud</strong> la operación de un grupo de <strong>8 empresas</strong>.</span>
+          <span lang="en">I build and modernize enterprise web applications end to end, from business requirements to cloud deployment. At Grupo Raloy I <strong>modernized 6 applications</strong> and <strong>migrated to Google Cloud</strong> the operations of an <strong>8-company group</strong>.</span>
+        </p>
+        <div class="cta rise d3">
+          <a class="btn primary" id="cvLink" href="assets/CV_CesarSeguraLanda_FullStack_ES.pdf" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>
+            <span lang="es">Descargar CV</span><span lang="en">Download CV</span>
+          </a>
+          <a class="btn" href="https://www.linkedin.com/in/cesar-segura-landa-028332419" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 21 11.2 21 14.5V21h-4v-5.8c0-1.4 0-3.2-1.95-3.2S12.8 13.5 12.8 15.1V21H9z"/></svg>
+            LinkedIn
+          </a>
+          <a class="btn" href="https://github.com/SLC-404" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.1-1.47-1.1-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="term rise d2" aria-label="Resumen de carrera en formato de terminal">
+        <div class="term-bar"><i></i><i></i><i></i><span>~/cesar — zsh</span></div>
+        <div class="term-body">
+          <div class="cmd">git log --oneline carrera</div>
+          <ul class="log">
+            <li><span class="h">a3f9c21</span><span><span class="tag">(HEAD)</span> <span lang="es">open to work: Full Stack</span><span lang="en">open to work: Full Stack</span></span></li>
+            <li><span class="h">7be1d04</span><span><span lang="es">Punto Cerca: ERP + asistente IA</span><span lang="en">Punto Cerca: ERP + AI assistant</span></span></li>
+            <li><span class="h">5c02e8a</span><span><span lang="es">migrar on-premise → Google Cloud</span><span lang="en">migrate on-premise → Google Cloud</span></span></li>
+            <li><span class="h">41d7f93</span><span><span lang="es">modernizar 6 apps a Laravel</span><span lang="en">modernize 6 apps to Laravel</span></span></li>
+            <li><span class="h">0e8b2c6</span><span><span lang="es">init: Ing. en Sistemas, TES</span><span lang="en">init: B.S. Computer Systems</span></span></li>
+          </ul>
+          <div class="cmd">cat perfil.env</div>
+          <div class="kv"><b>STACK</b>=<s>laravel,vue,php,python,django</s></div>
+          <div class="kv"><b>DATA</b>=<s>mysql,postgresql</s></div>
+          <div class="kv"><b>CLOUD</b>=<s>gcp,docker,git,linux</s></div>
+          <div class="kv"><b>SCRUM_MASTER</b>=<s>true</s></div>
+          <div class="kv"><b>LOCATION</b>=<s>"Edomex | remote"</s></div>
+          <div class="cmd" style="margin-top:10px"><span class="cursor"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <div class="metrics">
+    <div class="wrap">
+      <div class="metric"><div class="n">4<em>+</em></div><div class="l"><span lang="es">años desarrollando aplicaciones empresariales</span><span lang="en">years building enterprise apps</span></div></div>
+      <div class="metric"><div class="n">6</div><div class="l"><span lang="es">aplicaciones heredadas modernizadas</span><span lang="en">legacy apps modernized</span></div></div>
+      <div class="metric"><div class="n">8</div><div class="l"><span lang="es">empresas del grupo migradas a la nube</span><span lang="en">group companies moved to the cloud</span></div></div>
+      <div class="metric"><div class="n">200<em>+</em></div><div class="l"><span lang="es">proveedores usan el portal que desarrollé</span><span lang="en">vendors use the portal I built</span></div></div>
+    </div>
   </div>
 
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-    <symbol id="logo-laravel" viewBox="0 0 24 24">
-      <path fill="currentColor" d="M23.642 5.43a.37.37 0 0 1 .014.1v5.15a.38.38 0 0 1-.189.326l-4.323 2.49v4.934a.38.38 0 0 1-.188.326L9.93 23.95a.38.38 0 0 1-.375 0L.533 18.755a.38.38 0 0 1-.189-.326V2.974c0-.033.005-.066.014-.098a.36.36 0 0 1 .023-.058.36.36 0 0 1 .056-.078.37.37 0 0 1 .092-.07L5.043.05a.38.38 0 0 1 .375 0L9.93 2.646a.37.37 0 0 1 .092.07.36.36 0 0 1 .056.078c.01.019.018.038.023.058.009.032.014.065.014.098v9.65l3.761-2.164V5.53c0-.033.005-.066.014-.098a.36.36 0 0 1 .023-.058.36.36 0 0 1 .056-.078.37.37 0 0 1 .092-.07l4.513-2.596a.38.38 0 0 1 .375 0l4.513 2.596a.37.37 0 0 1 .18.204ZM22.9 10.462V6.176l-1.578.908-2.178 1.254v4.286l3.756-2.162Zm-4.512 7.75v-4.287l-2.142 1.224-6.131 3.505v4.33l8.273-4.773ZM1.1 3.62v14.591l8.273 4.773v-4.33l-4.322-2.445-.002-.001-.002-.002c-.014-.008-.026-.018-.039-.028a.36.36 0 0 1-.085-.09.36.36 0 0 1-.043-.071.38.38 0 0 1-.024-.082.4.4 0 0 1-.004-.054V6.736L2.68 5.48 1.1 4.57Zm4.132-2.813L1.48 2.974l3.75 2.166 3.75-2.166L5.232.807Zm1.95 13.225 2.19-1.26V3.62l-1.58.91-2.176 1.254v9.151l1.566-.903Zm11.58-10.646-3.75 2.166 3.75 2.166 3.75-2.166-3.75-2.166Zm-.375 4.952-2.178-1.254-1.578-.908v4.286l2.19 1.26 1.566.903V8.338Zm-8.644 9.667 5.517-3.151 2.758-1.575-3.747-2.16-4.34 2.498-3.953 2.275 3.765 2.113Z"/>
-    </symbol>
-    <symbol id="logo-vue" viewBox="0 0 64 64">
-      <path fill="#41b883" d="M4 10h16l12 20 12-20h16L32 56 4 10Z"/>
-      <path fill="#34495e" d="M20 10h12l0 20L20 10Zm12 20 12-20h-12v20Z"/>
-    </symbol>
-    <symbol id="logo-js" viewBox="0 0 64 64">
-      <rect width="52" height="52" x="6" y="6" rx="8" fill="currentColor"/>
-      <path fill="#111827" d="M25 43c0 6-4 9-10 9-3 0-6-1-8-3l3-5c1 1 3 2 5 2 2 0 4-1 4-4V24h6v19Zm18 9c-5 0-8-1-11-4l3-5c2 2 5 3 8 3 3 0 4-1 4-3 0-5-14-2-14-11 0-5 4-9 11-9 4 0 7 1 10 3l-3 5c-2-2-4-2-7-2-2 0-4 1-4 3 0 4 14 2 14 11 0 6-4 9-11 9Z"/>
-    </symbol>
-    <symbol id="logo-python" viewBox="0 0 64 64">
-      <path fill="#3776ab" d="M32 5c-12 0-16 4-16 12v7h18v4H11c-7 0-10 5-10 12s4 12 11 12h8v-9c0-7 5-12 12-12h15c6 0 11-5 11-12v-2c0-8-7-12-26-12Zm-8 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8Z"/>
-      <path fill="#ffd43b" d="M32 59c12 0 16-4 16-12v-7H30v-4h23c7 0 10-5 10-12S59 12 52 12h-8v9c0 7-5 12-12 12H17C11 33 6 38 6 45v2c0 8 7 12 26 12Zm8-8a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z"/>
-    </symbol>
-    <symbol id="logo-php" viewBox="0 0 64 64">
-      <ellipse cx="32" cy="32" rx="29" ry="18" fill="currentColor"/>
-      <text x="32" y="39" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="900" fill="#101827">PHP</text>
-    </symbol>
-    <symbol id="logo-gcp" viewBox="0 0 64 64">
-      <path fill="#4285f4" d="M24 50h25a13 13 0 0 0 1-26 20 20 0 0 0-37-5A16 16 0 0 0 24 50Z"/>
-      <path fill="#34a853" d="M14 47a16 16 0 0 1-1-28l8 8a7 7 0 0 0 3 13h5v10h-5c-4 0-7-1-10-3Z"/>
-      <path fill="#fbbc05" d="M49 24a20 20 0 0 0-36-5l8 8a9 9 0 0 1 17 1l11-4Z"/>
-      <path fill="#ea4335" d="M49 50H36V40h13a3 3 0 0 0 0-6v-10a13 13 0 0 1 0 26Z"/>
-    </symbol>
-    <symbol id="logo-db" viewBox="0 0 64 64">
-      <path fill="currentColor" d="M32 7c15 0 25 5 25 12v26c0 7-10 12-25 12S7 52 7 45V19C7 12 17 7 32 7Zm0 8c-11 0-17 3-17 4s6 4 17 4 17-3 17-4-6-4-17-4Zm17 15c-4 3-10 5-17 5s-13-2-17-5v6c0 1 6 5 17 5s17-4 17-5v-6Zm0 15c-4 3-10 5-17 5s-13-2-17-5c0 1 6 5 17 5s17-4 17-5Z"/>
-    </symbol>
-    <symbol id="logo-git" viewBox="0 0 64 64">
-      <path fill="currentColor" d="M59 29 35 5a5 5 0 0 0-7 0L5 28a5 5 0 0 0 0 7l24 24a5 5 0 0 0 7 0l23-23a5 5 0 0 0 0-7ZM24 18l8 8a6 6 0 0 1 6 6l8 8-5 5-8-8a6 6 0 0 1-7-7l-8-8 6-4Z"/>
-    </symbol>
-  </svg>
-
-  <header class="site-shell topbar">
-    <a class="brand" href="#inicio" aria-label="Inicio">
-      <span class="brand-mark">CSL</span>
-      <span>Cesar Segura Landa</span>
-    </a>
-    <nav aria-label="Secciones principales">
-      <a href="#proyectos">Proyectos</a>
-      <a href="#experiencia">Experiencia</a>
-      <a href="#stack">Tecnolog&iacute;as</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-  </header>
-
-  <main id="inicio">
-    <section class="site-shell hero">
-      <div class="hero-copy reveal">
-        <p class="eyebrow cosmic"><span class="status-dot"></span> Desarrollador Full Stack | Laravel · Vue.js · Google Cloud</p>
-        <div class="identity-strip">
-          <img src="assets/profile.jpg" alt="Foto de perfil de Cesar Segura Landa">
-          <div>
-            <strong>Perfil profesional</strong>
-            <span>Arquitectura, modernizaci&oacute;n y soluciones cloud</span>
-          </div>
+  <!-- PROJECTS -->
+  <section class="block" id="proyectos">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="kicker">// <span lang="es">proyectos</span><span lang="en">projects</span></div>
+          <h2><span lang="es">Lo que he construido</span><span lang="en">What I've built</span></h2>
         </div>
-        <h1>Cesar Segura <span class="hero-title-accent">Landa</span></h1>
-        <p class="lead">
-          Dise&ntilde;o, modernizo y despliego aplicaciones empresariales orientadas a operaci&oacute;n:
-          portales multiempresa, integraciones con ERP, tableros ejecutivos y automatizaci&oacute;n de procesos.
-        </p>
-        <div class="hero-actions">
-          <a class="button primary" href="mailto:cesar_landa@live.com">Contactar</a>
-          <a class="button secondary" href="https://github.com/SLC-404" target="_blank" rel="noreferrer">Repositorio GitHub</a>
-        </div>
-        <div class="universe-tags" aria-label="Especialidades">
-          <span>Arquitectura cloud</span>
-          <span>Aplicaciones empresariales</span>
-          <span>Inteligencia de negocio</span>
-          <span>Automatizaci&oacute;n</span>
-        </div>
+        <p><span lang="es">Un proyecto propio con código abierto y cuatro sistemas empresariales en producción.</span><span lang="en">One open-source personal project and four enterprise systems in production.</span></p>
       </div>
 
-      <div class="hero-visual" aria-hidden="true">
-        <canvas id="networkCanvas"></canvas>
-        <div class="cosmic-scene">
-          <div class="nebula-cloud"></div>
-          <div class="planet primary"></div>
-          <div class="planet secondary"></div>
-          <div class="comet"></div>
+      <article class="feature">
+        <div class="feature-main">
+          <span class="badge"><span lang="es">Proyecto personal · código abierto</span><span lang="en">Personal project · open source</span></span>
+          <h3>Punto Cerca</h3>
+          <p class="sub"><span lang="es">Mini ERP y punto de venta para una tienda de conveniencia: cubre desde la compra a proveedores hasta la venta al cliente, con un asistente que arma pedidos en lenguaje natural.</span><span lang="en">Mini ERP and point of sale for a convenience store, covering everything from supplier purchasing to the customer sale, with an assistant that builds orders from natural language.</span></p>
+          <ul class="checks">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span lang="es">Catálogo, inventario con punto de reorden e historial de precios</span><span lang="en">Catalog, inventory with reorder points and price history</span></span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span lang="es">Órdenes de compra que al recibirse aumentan el inventario</span><span lang="en">Purchase orders that update stock on receipt</span></span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span lang="es">Punto de venta visual y pedidos de clientes con entrega o recolección</span><span lang="en">Visual POS and customer orders with delivery or pickup</span></span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span lang="es">Roles y permisos granulares con los grupos nativos de Django</span><span lang="en">Granular roles and permissions on Django's native groups</span></span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span lang="es">Asistente de pedidos con IA local que valida existencias</span><span lang="en">Local AI ordering assistant that checks stock</span></span></li>
+          </ul>
+          <div class="chips">
+            <span class="chip">Python</span><span class="chip">Django</span><span class="chip">PostgreSQL</span><span class="chip">HTMX</span><span class="chip">Alpine.js</span><span class="chip">Tailwind</span><span class="chip">LangGraph</span><span class="chip">Ollama · Qwen</span>
+          </div>
+          <a class="btn" href="https://github.com/SLC-404/DJG001" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></svg>
+            <span lang="es">Ver código en GitHub</span><span lang="en">View code on GitHub</span>
+          </a>
         </div>
-        <div class="orbit"></div>
-        <aside class="profile-panel reveal">
-          <div class="profile-head">
-            <div class="profile-frame">
-              <img class="profile-photo" src="assets/profile.jpg" alt="Foto de perfil de Cesar Segura Landa">
-            </div>
-            <div>
-              <h2>Arquitectura de soluciones</h2>
-              <p>Especializado en Laravel, Vue.js, Livewire, JavaScript, Python, bases de datos y Google Cloud Platform.</p>
-            </div>
+        <div class="feature-side" aria-label="Ejemplo del asistente de pedidos">
+          <div class="side-note">// <span lang="es">ejemplo de conversación</span><span lang="en">sample conversation</span></div>
+          <div class="chat">
+            <div class="msg u"><span lang="es">Quiero 2 cocas de 600 y unas papas, paso por ellas</span><span lang="en">I want 2 sodas and some chips, I'll pick them up</span></div>
+            <div class="msg a"><span lang="es"><b>✓ inventario validado</b><br>2 × Refresco 600 ml<br>1 × Papas 45 g<br>Recolección en sucursal · ¿confirmo el pedido?</span><span lang="en"><b>✓ stock checked</b><br>2 × Soda 600 ml<br>1 × Chips 45 g<br>In-store pickup · confirm the order?</span></div>
           </div>
-          <div class="signal-list">
-            <div class="signal">
-              <span class="mini-icon">01</span>
-              <span><strong>Modernizaci&oacute;n tecnol&oacute;gica</strong>6 aplicaciones heredadas transformadas con Laravel y Livewire.</span>
-            </div>
-            <div class="signal">
-              <span class="mini-icon">02</span>
-              <span><strong>Infraestructura cloud</strong>Migraci&oacute;n on-premise a GCP con Cloud SQL, Filestore, VM y SSL.</span>
-            </div>
-            <div class="signal">
-              <span class="mini-icon">03</span>
-              <span><strong>Impacto operativo</strong>Soluciones utilizadas por +100 usuarios internos y +200 proveedores.</span>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
+          <div class="tree"><b>apps/</b>
+├── catalog/      <span lang="es"># inventario</span><span lang="en"># inventory</span>
+├── procurement/  <span lang="es"># compras</span><span lang="en"># purchasing</span>
+├── sales/        <span lang="es"># ventas</span><span lang="en"># sales</span>
+├── order_agent/  <span lang="es"># agente IA</span><span lang="en"># AI agent</span>
+└── access_control/</div>
+        </div>
+      </article>
 
-    <div class="site-shell metrics" aria-label="Resumen profesional">
-      <div class="metric reveal"><b>8</b><span>empresas atendidas dentro de un grupo corporativo</span></div>
-      <div class="metric reveal"><b>6</b><span>aplicaciones empresariales modernizadas</span></div>
-      <div class="metric reveal"><b>+200</b><span>proveedores externos integrados a plataformas digitales</span></div>
-      <div class="metric reveal"><b>+100</b><span>usuarios internos con operación diaria en sistemas empresariales</span></div>
+      <div class="work-label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        <span lang="es">Sistemas empresariales · Grupo Raloy · código privado</span><span lang="en">Enterprise systems · Grupo Raloy · private code</span>
+      </div>
+      <div class="rows">
+        <div class="row">
+          <h3><span lang="es">Portal de Proveedores</span><span lang="en">Vendor Portal</span></h3>
+          <p><span lang="es">Plataforma multiempresa para gestión documental, validación y aprobación de proveedores externos. La usan más de 200 proveedores.</span><span lang="en">Multi-company platform for vendor document management, validation and approval. Used by 200+ external vendors.</span></p>
+          <div class="chips"><span class="chip">Laravel</span><span class="chip">Livewire</span><span class="chip">MySQL</span></div>
+        </div>
+        <div class="row">
+          <h3><span lang="es">Portal de Comisiones</span><span lang="en">Commissions Portal</span></h3>
+          <p><span lang="es">Cálculo automatizado de comisiones con autorización multinivel, integrado con finanzas y administración para eliminar trabajo manual.</span><span lang="en">Automated commission calculation with multi-level approval, integrated with finance and administration to remove manual work.</span></p>
+          <div class="chips"><span class="chip">Laravel</span><span class="chip">APIs REST</span><span class="chip">ERP SCP</span></div>
+        </div>
+        <div class="row">
+          <h3><span lang="es">Migración a Google Cloud</span><span lang="en">Google Cloud Migration</span></h3>
+          <p><span lang="es">Diseño e implementación de la migración de aplicaciones y almacenamiento de on-premise a GCP, con arquitectura, despliegues y certificados SSL.</span><span lang="en">Designed and executed the move of applications and storage from on-premise to GCP, including architecture, deployments and SSL.</span></p>
+          <div class="chips"><span class="chip">Cloud SQL</span><span class="chip">Filestore</span><span class="chip">Compute Engine</span></div>
+        </div>
+        <div class="row">
+          <h3><span lang="es">Dashboards ejecutivos</span><span lang="en">Executive dashboards</span></h3>
+          <p><span lang="es">Reportes operativos y estratégicos que la dirección usa para decidir, conectados a los sistemas del grupo.</span><span lang="en">Operational and strategic reports leadership uses to make decisions, connected to the group's systems.</span></p>
+          <div class="chips"><span class="chip">Power BI</span><span class="chip">Looker Studio</span></div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <section class="site-shell" id="proyectos">
-      <div class="section-head reveal">
+  <!-- EXPERIENCE -->
+  <section class="block" id="experiencia" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
         <div>
-          <p class="section-kicker">Proyectos destacados</p>
-          <h2>Soluciones con impacto operativo.</h2>
+          <div class="kicker">// <span lang="es">experiencia</span><span lang="en">experience</span></div>
+          <h2><span lang="es">Del requerimiento al despliegue</span><span lang="en">From requirement to deployment</span></h2>
         </div>
-        <p>
-          He participado en proyectos donde el software integra áreas operativas, administrativas,
-          financieras y directivas mediante flujos confiables, datos accionables y despliegues estables.
-        </p>
       </div>
+      <ol class="timeline">
+        <li class="job">
+          <div class="job-meta"><span class="when"><span lang="es">may 2023 — jun 2026</span><span lang="en">May 2023 — Jun 2026</span></span><span>Metepec, Edo. Méx.</span></div>
+          <h3><span lang="es">Ingeniero de Software / Analista de Desarrollo</span><span lang="en">Software Engineer / Development Analyst</span></h3>
+          <div class="org">Corporativo Nova · Grupo Raloy</div>
+          <ul>
+            <li><span lang="es">Lideré la modernización de 6 aplicaciones empresariales heredadas a Laravel y Livewire, mejorando mantenibilidad y tiempos de despliegue.</span><span lang="en">Led the modernization of 6 legacy enterprise applications to Laravel and Livewire, improving maintainability and deployment times.</span></li>
+            <li><span lang="es">Desarrollé el Portal de Proveedores (200+ proveedores) y el Portal de Comisiones con autorización multinivel.</span><span lang="en">Built the Vendor Portal (200+ vendors) and the Commissions Portal with multi-level approval.</span></li>
+            <li><span lang="es">Construí APIs REST e integraciones con el ERP corporativo (SCP), automatizando procesos de 8 empresas.</span><span lang="en">Built REST APIs and integrations with the corporate ERP (SCP), automating processes for 8 companies.</span></li>
+            <li><span lang="es">Diseñé y ejecuté la migración a Google Cloud Platform: Cloud SQL, Filestore, máquinas virtuales y SSL.</span><span lang="en">Designed and executed the migration to Google Cloud Platform: Cloud SQL, Filestore, VMs and SSL.</span></li>
+            <li><span lang="es">Levanté requerimientos con áreas operativas, administrativas y financieras; seguimiento en Jira Service Management.</span><span lang="en">Gathered requirements with operations, administration and finance; tracked work in Jira Service Management.</span></li>
+          </ul>
+        </li>
+        <li class="job past">
+          <div class="job-meta"><span class="when"><span lang="es">may 2022 — mar 2023</span><span lang="en">May 2022 — Mar 2023</span></span></div>
+          <h3><span lang="es">Analista de Desarrollo / Software Engineer</span><span lang="en">Development Analyst / Software Engineer</span></h3>
+          <div class="org">Empresa Virtual (EV)</div>
+          <ul>
+            <li><span lang="es">Desarrollé aplicaciones web a la medida con Laravel, JavaScript y MySQL para clientes externos.</span><span lang="en">Built custom web applications with Laravel, JavaScript and MySQL for external clients.</span></li>
+            <li><span lang="es">Analicé requerimientos, definí alcances y diseñé bases de datos SQL bajo Scrum.</span><span lang="en">Analyzed requirements, defined scope and designed SQL databases in Scrum.</span></li>
+          </ul>
+        </li>
+        <li class="job past">
+          <div class="job-meta"><span class="when">2020 — 2022</span></div>
+          <h3><span lang="es">Desarrollador · proyectos institucionales</span><span lang="en">Developer · institutional projects</span></h3>
+          <div class="org">TES de Tianguistenco</div>
+          <ul>
+            <li><span lang="es">Sistema web de gestión docente con reportes (PHP, AJAX, MySQL) y app Android informativa.</span><span lang="en">Faculty management web system with reporting (PHP, AJAX, MySQL) and an informational Android app.</span></li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </section>
 
-      <div class="project-grid">
-        <article class="project-card reveal" style="grid-column: 1 / -1;">
-          <div class="project-top">
-            <h3>Punto Cerca: mini ERP y punto de venta con IA</h3>
-            <span class="tag">Proyecto personal</span>
-          </div>
-          <p>
-            Aplicación full stack en Django para una tienda de conveniencia: catálogo e inventario, compras a proveedores,
-            punto de venta, pedidos de clientes, roles y permisos, y un asistente conversacional local que arma pedidos
-            en lenguaje natural (LangGraph + Qwen vía Ollama).
-            <a href="https://github.com/SLC-404/DJG001" target="_blank" rel="noopener" style="color:#67e8f9;font-weight:700;text-decoration:underline;white-space:nowrap;">Ver repositorio →</a>
-          </p>
-          <div class="project-points">
-            <span class="pill">Python · Django</span>
-            <span class="pill">PostgreSQL</span>
-            <span class="pill">HTMX · Alpine.js · Tailwind</span>
-            <span class="pill">LangGraph · Ollama</span>
-          </div>
-        </article>
-        <article class="project-card reveal">
-          <div class="project-top">
-            <h3>Portal de Proveedores</h3>
-            <span class="tag">Multiempresa</span>
-          </div>
-          <p>
-            Plataforma para gestión documental, validación y aprobación de proveedores externos,
-            utilizada por aproximadamente +200 proveedores dentro del grupo empresarial.
-          </p>
-          <div class="project-points">
-            <span class="pill">Laravel</span>
-            <span class="pill">Gestión documental</span>
-            <span class="pill">Validación operativa</span>
-          </div>
-        </article>
-
-        <article class="project-card reveal">
-          <div class="project-top">
-            <h3>Portal de Comisiones</h3>
-            <span class="tag">Finanzas</span>
-          </div>
-          <p>
-            Cálculo automatizado de comisiones con autorización multinivel, integrado con procesos
-            financieros y administrativos para reducir trabajo manual y errores operativos.
-          </p>
-          <div class="project-points">
-            <span class="pill">Automatización financiera</span>
-            <span class="pill">Flujos de autorización</span>
-            <span class="pill">ERP</span>
-          </div>
-        </article>
-
-        <article class="project-card reveal">
-          <div class="project-top">
-            <h3>Migración a Google Cloud</h3>
-            <span class="tag">Cloud</span>
-          </div>
-          <p>
-            Diseño e implementación de migración desde infraestructura on-premise hacia Google Cloud
-            Platform, incluyendo arquitectura, despliegues, Cloud SQL, Filestore, VM y certificados SSL.
-          </p>
-          <div class="project-points">
-            <span class="pill">GCP</span>
-            <span class="pill">Cloud SQL</span>
-            <span class="pill">Linux</span>
-          </div>
-        </article>
-
-        <article class="project-card reveal">
-          <div class="project-top">
-            <h3>Dashboards Ejecutivos</h3>
-            <span class="tag">BI</span>
-          </div>
-          <p>
-            Reportes operativos y estratégicos con Power BI y Google Looker Studio para dar visibilidad
-            a directivos y equipos sobre indicadores relevantes del negocio.
-          </p>
-          <div class="project-points">
-            <span class="pill">Power BI</span>
-            <span class="pill">Looker Studio</span>
-            <span class="pill">KPIs</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="site-shell" id="experiencia">
-      <div class="section-head reveal">
+  <!-- STACK -->
+  <section class="block" id="stack" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
         <div>
-          <p class="section-kicker">Experiencia profesional</p>
-          <h2>Del requerimiento al despliegue.</h2>
+          <div class="kicker">// stack</div>
+          <h2><span lang="es">Herramientas con las que entrego</span><span lang="en">Tools I ship with</span></h2>
         </div>
-        <p>
-          Mi enfoque combina análisis de negocio, arquitectura de soluciones, desarrollo full stack,
-          infraestructura cloud y seguimiento de proyectos.
-        </p>
+        <p><span lang="es">Resaltado: lo que uso a diario en producción.</span><span lang="en">Highlighted: what I use daily in production.</span></p>
       </div>
-
-      <div class="timeline">
-        <article class="timeline-item reveal">
-          <div class="timeline-date">2023 - 2026</div>
-          <div>
-            <h3>Corporativo Nova - Grupo Raloy</h3>
-            <p class="role">Ingeniero de Software / Analista de Desarrollo</p>
-            <ul class="clean-list">
-              <li>Lideré la modernización de 6 aplicaciones empresariales heredadas a Laravel y Livewire.</li>
-              <li>Desarrollé el Portal de Proveedores (200+ proveedores externos) y el Portal de Comisiones con autorización multinivel.</li>
-              <li>Construí APIs REST e integraciones con el ERP corporativo (SCP) para 8 empresas del grupo.</li>
-              <li>Diseñé e implementé la migración de on-premise a Google Cloud Platform (Cloud SQL, Filestore, VM y SSL).</li>
-              <li>Construí dashboards ejecutivos en Power BI y Looker Studio para la dirección.</li>
-              <li>Levanté requerimientos con áreas operativas, administrativas y financieras; seguimiento en Jira Service Management.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="timeline-item reveal">
-          <div class="timeline-date">2022 - 2023</div>
-          <div>
-            <h3>Empresa Virtual (EV)</h3>
-            <p class="role">Analista de Desarrollo / Software Engineer</p>
-            <ul class="clean-list">
-              <li>Desarrollé aplicaciones web a la medida con Laravel, JavaScript y MySQL.</li>
-              <li>Analicé requerimientos y entregué soluciones alineadas a procesos de negocio del cliente.</li>
-            </ul>
-          </div>
-        </article>
+      <div class="stack">
+        <div><h3>Backend</h3><div class="chips"><span class="chip core">PHP</span><span class="chip core">Laravel</span><span class="chip core">Livewire</span><span class="chip">Python</span><span class="chip">Django</span><span class="chip core">APIs REST</span></div></div>
+        <div><h3>Frontend</h3><div class="chips"><span class="chip core">Vue.js</span><span class="chip core">JavaScript</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Tailwind</span><span class="chip">HTMX</span></div></div>
+        <div><h3><span lang="es">Bases de datos</span><span lang="en">Databases</span></h3><div class="chips"><span class="chip core">MySQL</span><span class="chip">PostgreSQL</span><span class="chip">SQL</span><span class="chip"><span lang="es">Modelado OLAP</span><span lang="en">OLAP modeling</span></span></div></div>
+        <div><h3>Cloud &amp; DevOps</h3><div class="chips"><span class="chip core">Google Cloud</span><span class="chip">Cloud SQL</span><span class="chip">Filestore</span><span class="chip">Docker</span><span class="chip">Git</span><span class="chip">Linux</span></div></div>
+        <div><h3><span lang="es">BI y datos</span><span lang="en">BI &amp; data</span></h3><div class="chips"><span class="chip">Power BI</span><span class="chip">Looker Studio</span><span class="chip">Pandas</span></div></div>
+        <div><h3><span lang="es">IA y método</span><span lang="en">AI &amp; process</span></h3><div class="chips"><span class="chip">LangGraph</span><span class="chip">Ollama</span><span class="chip">Scrum</span><span class="chip">Jira</span></div></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="site-shell" id="stack">
-      <div class="section-head reveal">
+  <!-- CREDENTIALS -->
+  <section class="block" id="formacion" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
         <div>
-          <p class="section-kicker">Competencias t&eacute;cnicas</p>
-          <h2>Tecnolog&iacute;as y herramientas.</h2>
+          <div class="kicker">// <span lang="es">formación</span><span lang="en">credentials</span></div>
+          <h2><span lang="es">Certificaciones y estudios</span><span lang="en">Certifications &amp; education</span></h2>
         </div>
-        <p>
-          Tecnologías utilizadas para desarrollar aplicaciones empresariales, automatizar procesos,
-          integrar sistemas y desplegar soluciones en infraestructura cloud.
-        </p>
       </div>
-
-      <div class="stack-layout">
-        <div class="stack-panel reveal">
-          <h3>Herramientas principales</h3>
-          <div class="logo-grid" aria-label="Tecnologias principales">
-            <article class="tech-card" style="--tech:#ff2d20;--tech-glow:rgba(255,45,32,.42)">
-              <svg><use href="#logo-laravel"></use></svg>
-              <div><strong>Laravel</strong><span>Backends empresariales, portales, APIs y flujos de negocio.</span></div>
-            </article>
-            <article class="tech-card" style="--tech:#41b883;--tech-glow:rgba(65,184,131,.42)">
-              <svg><use href="#logo-vue"></use></svg>
-              <div><strong>Vue.js</strong><span>Interfaces reactivas, componentes y experiencias web fluidas.</span></div>
-            </article>
-            <article class="tech-card" style="--tech:#f7df1e;--tech-glow:rgba(247,223,30,.34)">
-              <svg><use href="#logo-js"></use></svg>
-              <div><strong>JavaScript</strong><span>Interacción, automatización frontend e integraciones web.</span></div>
-            </article>
-            <article class="tech-card" style="--tech:#4b8bbe;--tech-glow:rgba(75,139,190,.42)">
-              <svg><use href="#logo-python"></use></svg>
-              <div><strong>Python</strong><span>Scripts, automatización, soporte de datos y utilidades internas.</span></div>
-            </article>
-            <article class="tech-card" style="--tech:#777bb4;--tech-glow:rgba(119,123,180,.42)">
-              <svg><use href="#logo-php"></use></svg>
-              <div><strong>PHP</strong><span>Desarrollo web, lógica de negocio y mantenimiento de sistemas.</span></div>
-            </article>
-            <article class="tech-card" style="--tech:#4285f4;--tech-glow:rgba(66,133,244,.42)">
-              <svg><use href="#logo-gcp"></use></svg>
-              <div><strong>Google Cloud</strong><span>Cloud SQL, Filestore, VM, SSL y despliegues productivos.</span></div>
-            </article>
-            <article class="tech-card" style="--tech:#36d399;--tech-glow:rgba(54,211,153,.38)">
-              <svg><use href="#logo-db"></use></svg>
-              <div><strong>Bases de datos</strong><span>MySQL, PostgreSQL, consultas, reportes y persistencia.</span></div>
-            </article>
-            <article class="tech-card" style="--tech:#f05032;--tech-glow:rgba(240,80,50,.4)">
-              <svg><use href="#logo-git"></use></svg>
-              <div><strong>Git & Linux</strong><span>Versionamiento, ambientes, despliegue y operación técnica.</span></div>
-            </article>
-            <article class="tech-card" style="--tech:#ffb703;--tech-glow:rgba(255,183,3,.34)">
-              <svg><use href="#logo-db"></use></svg>
-              <div><strong>BI & Gestión</strong><span>Power BI, Looker Studio, Jira, Notion y ClickUp.</span></div>
-            </article>
-          </div>
-
-          <div class="skill-cloud" aria-label="Tecnologias adicionales">
-            <span class="skill">Livewire</span>
-            <span class="skill">HTML</span>
-            <span class="skill">CSS</span>
-            <span class="skill">Cloud SQL</span>
-            <span class="skill">Filestore</span>
-            <span class="skill">Power BI</span>
-            <span class="skill">Looker Studio</span>
-            <span class="skill">Jira Service Management</span>
-          </div>
-        </div>
-
-        <div class="stack-panel reveal">
-          <h3>Competencias</h3>
-          <div class="competency-grid">
-            <div class="competency">
-              <strong>Liderazgo técnico</strong>
-              <span>Coordinación de iniciativas, prioridades y decisiones de implementación.</span>
-            </div>
-            <div class="competency">
-              <strong>Análisis de requerimientos</strong>
-              <span>Traducción de necesidades de negocio en soluciones claras y ejecutables.</span>
-            </div>
-            <div class="competency">
-              <strong>Arquitectura de soluciones</strong>
-              <span>Diseño de flujos, infraestructura, despliegues e integraciones.</span>
-            </div>
-            <div class="competency">
-              <strong>Transformación digital</strong>
-              <span>Modernización, automatización y adopción de herramientas empresariales.</span>
-            </div>
+      <div class="creds">
+        <ul class="cred-list">
+          <li><b>Scrum Master Practitioner</b><time>2026</time><span><span lang="es">BPracticert México · vigente a 2028</span><span lang="en">BPracticert México · valid through 2028</span></span></li>
+          <li><b>MTA: Introduction to Programming using JavaScript</b><time>2021</time><span>Microsoft · 98-382</span></li>
+          <li><b>MOS: Excel 2016</b><time>2020</time><span>Microsoft · 77-727</span></li>
+          <li><b><span lang="es">17 cursos técnicos</span><span lang="en">17 technical courses</span></b><time>2026</time><span><span lang="es">Platzi · Google Cloud ×5, Django, Python, SQL, Git, Data Warehousing · </span><span lang="en">Platzi · Google Cloud ×5, Django, Python, SQL, Git, Data Warehousing · </span><a href="https://platzi.com/p/cesar7segura30/" target="_blank" rel="noopener"><span lang="es">ver perfil</span><span lang="en">see profile</span></a></span></li>
+          <li><b>Laravel: <span lang="es">de principiante a experto</span><span lang="en">beginner to expert</span></b><time>2022</time><span>Udemy · 23.5 h</span></li>
+        </ul>
+        <div class="edu">
+          <span class="badge"><span lang="es">Titulado</span><span lang="en">Licensed</span></span>
+          <h3><span lang="es">Ingeniería en Sistemas Computacionales</span><span lang="en">B.S. in Computer Systems Engineering</span></h3>
+          <p>Tecnológico de Estudios Superiores de Tianguistenco · 2017 — 2022</p>
+          <p class="mono"><span lang="es">Cédula profesional</span><span lang="en">Professional license</span> 13179966</p>
+          <div class="langs">
+            <span class="chip"><span lang="es">Español · nativo</span><span lang="en">Spanish · native</span></span>
+            <span class="chip"><span lang="es">Inglés · intermedio</span><span lang="en">English · intermediate</span></span>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="site-shell contact" id="contacto">
-      <div class="contact-panel reveal">
-        <div>
-          <p class="section-kicker">Contacto</p>
-          <h2>Disponible para colaborar.</h2>
-          <p>
-            Ingeniero en Sistemas Computacionales por el Tecnológico de Estudios Superiores de
-            Tianguistenco. Cédula profesional: 13179966.
-          </p>
-        </div>
-        <div class="contact-links">
-          <a class="contact-link" href="mailto:cesar_landa@live.com">Email <span>cesar_landa@live.com</span></a>
-          <a class="contact-link" href="tel:+527131058236">Teléfono <span>713 105 8236</span></a>
-          <a class="contact-link" href="https://github.com/SLC-404" target="_blank" rel="noreferrer">GitHub <span>github.com/SLC-404</span></a>
-          <a class="contact-link" href="https://linkedin.com/in/cesar-segura-landa-028332419" target="_blank" rel="noreferrer">LinkedIn <span>linkedin.com/in/cesar-segura-landa-028332419</span></a>
-          <div class="contact-link">Ubicación <span>Almoloya del Río, Estado de México</span></div>
+  <!-- CONTACT -->
+  <section class="block" id="contacto" style="padding-top:0">
+    <div class="wrap">
+      <div class="contact">
+        <div class="kicker">// <span lang="es">contacto</span><span lang="en">contact</span></div>
+        <h2 style="margin-top:12px"><span lang="es">¿Buscas un <span class="hl">Full Stack</span> que entienda el negocio?</span><span lang="en">Looking for a <span class="hl">Full Stack</span> dev who gets the business?</span></h2>
+        <p><span lang="es">Estoy disponible para incorporarme de inmediato en el Estado de México, en modalidad híbrida o remota. Respondo en menos de 24 horas.</span><span lang="en">Available to start right away in the State of Mexico, hybrid or remote. I reply within 24 hours.</span></p>
+        <div class="channels">
+          <div class="channel">
+            <small>Email</small>
+            <strong id="mail">cesar_landa@live.com</strong>
+            <button class="icon-btn copy" type="button" data-copy="cesar_landa@live.com"><span lang="es">Copiar</span><span lang="en">Copy</span></button>
+          </div>
+          <a class="channel" href="https://www.linkedin.com/in/cesar-segura-landa-028332419" target="_blank" rel="noopener">
+            <small>LinkedIn</small><strong>cesar-segura-landa</strong>
+          </a>
+          <a class="channel" href="https://github.com/SLC-404" target="_blank" rel="noopener">
+            <small>GitHub</small><strong>SLC-404</strong>
+          </a>
+          <div class="channel">
+            <small><span lang="es">Teléfono / WhatsApp</span><span lang="en">Phone / WhatsApp</span></small>
+            <strong>+52 713 105 8236</strong>
+            <button class="icon-btn copy" type="button" data-copy="+527131058236"><span lang="es">Copiar</span><span lang="en">Copy</span></button>
+          </div>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+</main>
 
-  <footer class="site-shell">
-    Cesar Segura Landa - CV digital para GitHub Pages
-  </footer>
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Cesar Segura Landa</span>
+    <span>Almoloya del Río, Edo. de México</span>
+  </div>
+</footer>
 
-  <script>
-    const canvas = document.getElementById("networkCanvas");
-    const ctx = canvas.getContext("2d");
-    const palette = ["#33e6ff", "#9d6bff", "#ff5c8a", "#42f5b0", "#ffd166"];
-    let particles = [];
-    let width = 0;
-    let height = 0;
+<script>
+(function(){
+  var root=document.documentElement;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
 
-    function resizeCanvas() {
-      const rect = canvas.getBoundingClientRect();
-      const ratio = Math.min(window.devicePixelRatio || 1, 2);
-      width = rect.width;
-      height = rect.height;
-      canvas.width = Math.max(1, Math.floor(width * ratio));
-      canvas.height = Math.max(1, Math.floor(height * ratio));
-      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-      particles = Array.from({ length: Math.max(42, Math.floor(width / 10)) }, (_, index) => ({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.34,
-        vy: (Math.random() - 0.5) * 0.34,
-        r: 1.6 + Math.random() * 3.4,
-        color: palette[index % palette.length]
-      }));
-    }
+  // Language
+  var langBtn=document.getElementById('langBtn'), cv=document.getElementById('cvLink');
+  function applyLang(l){
+    root.setAttribute('data-lang',l); root.setAttribute('lang',l);
+    langBtn.textContent = l==='es' ? 'EN' : 'ES';
+    cv.href = l==='es' ? 'assets/CV_CesarSeguraLanda_FullStack_ES.pdf' : 'assets/CV_CesarSeguraLanda_FullStack_EN.pdf';
+    document.title = l==='es' ? 'Cesar Segura Landa | Desarrollador Full Stack' : 'Cesar Segura Landa | Full Stack Developer';
+  }
+  var saved=get('lang') || 'es';
+  applyLang(saved);
+  langBtn.addEventListener('click',function(){var l=root.getAttribute('data-lang')==='es'?'en':'es';applyLang(l);set('lang',l)});
 
-    function drawNetwork() {
-      ctx.clearRect(0, 0, width, height);
-      for (const point of particles) {
-        point.x += point.vx;
-        point.y += point.vy;
-        if (point.x < 0 || point.x > width) point.vx *= -1;
-        if (point.y < 0 || point.y > height) point.vy *= -1;
-      }
+  // Theme
+  var themeBtn=document.getElementById('themeBtn');
+  var t=get('theme'); if(t) root.setAttribute('data-theme',t);
+  themeBtn.addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');
+    var next=cur==='dark'?'light':'dark'; root.setAttribute('data-theme',next); set('theme',next);
+  });
 
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const a = particles[i];
-          const b = particles[j];
-          const distance = Math.hypot(a.x - b.x, a.y - b.y);
-          if (distance < 132) {
-            ctx.globalAlpha = (1 - distance / 132) * 0.34;
-            ctx.strokeStyle = "#33e6ff";
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.stroke();
-          }
-        }
-      }
+  // Copy buttons
+  document.querySelectorAll('[data-copy]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var txt=b.getAttribute('data-copy'), es=b.querySelector('[lang="es"]'), en=b.querySelector('[lang="en"]');
+      function done(){es.textContent='¡Copiado!';en.textContent='Copied!';setTimeout(function(){es.textContent='Copiar';en.textContent='Copy'},1600)}
+      if(navigator.clipboard){navigator.clipboard.writeText(txt).then(done,function(){})}
+    });
+  });
 
-      ctx.globalAlpha = 1;
-      for (const point of particles) {
-        ctx.fillStyle = point.color;
-        ctx.beginPath();
-        ctx.arc(point.x, point.y, point.r, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      requestAnimationFrame(drawNetwork);
-    }
-
-    const revealObserver = new IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          revealObserver.unobserve(entry.target);
-        }
-      }
-    }, { threshold: 0.14 });
-
-    document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
-    window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
-    drawNetwork();
-  </script>
+  document.getElementById('year').textContent=new Date().getFullYear();
+})();
+</script>
 </body>
 </html>
