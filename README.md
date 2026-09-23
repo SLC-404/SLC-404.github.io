@@ -1,6 +1,6 @@
 # Cesar Segura Landa - Portafolio profesional
 
-Pagina web personal tipo CV/portfolio para presentar experiencia profesional, proyectos destacados, habilidades tecnicas y datos de contacto.
+Página web personal tipo CV/portafolio para presentar experiencia profesional, proyectos destacados, habilidades tecnicas y datos de contacto.
 
 El sitio esta construido como una pagina estatica lista para publicarse con GitHub Pages.
 
@@ -59,4 +59,4 @@ http://127.0.0.1:4173/
 
 - Email: `cesar_landa@live.com`
 - GitHub: [github.com/SLC-404](https://github.com/SLC-404)
-- LinkedIn: [linkedin.com/in/cesar-segura-028332419](https://linkedin.com/in/cesar-segura-028332419)
+- LinkedIn: [linkedin.com/in/cesar-segura-landa-028332419](https://linkedin.com/in/cesar-segura-landa-028332419)
